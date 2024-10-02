@@ -83,7 +83,10 @@ public class Program
         {
             if (!File.Exists(bestandPad))
             {
-                File.Create(bestandPad).Close();
+                Console.WriteLine("Het bestand bestaat niet.");
+                File.WriteAllText(bestandPad, "Dit is een voorbeeldtekst");
+                Console.WriteLine("Voorbeeldtekst is geschreven naar het bestand.");
+                return;
             }
 
             string[] lijnen = File.ReadAllLines(bestandPad);
