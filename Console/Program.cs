@@ -51,28 +51,26 @@ public class Program
     }
     public static void Calc()
     {
-        Console.Write("Voer het eerste getal in: ");
-        int getal1 = int.Parse(Console.ReadLine() ?? "0");
+        Console.Write("Voer het eerste getal in: "); // Vraag de gebruiker om getallen​
+        int getal1 = int.Parse(Console.ReadLine() ?? "");
         Console.Write("Voer het tweede getal in: ");
-        int getal2 = int.Parse(Console.ReadLine() ?? "0");
+        int getal2 = int.Parse(Console.ReadLine() ?? "");
+        SomInt som = new SomInt(getal1, getal2);
+        Console.WriteLine($"De som van {getal1} en {getal2} is: {som.Waarde}");
 
-        SomInt resultaat1 = new(getal1, getal2);
-        SomInt resultaat2 = new(13, 15);
-        SomInt resultaat3 = resultaat1 + resultaat2;
-                
-        Console.WriteLine(resultaat3.Waarde);
-        Console.WriteLine($"13 + 15 plus de getallen is { resultaat3.Waarde }");
+        SomInt resultaat1 = new SomInt(50);
+        SomInt resultaat2 = new SomInt(50);
+        Console.WriteLine("Het resultaat van " + resultaat1.Waarde + " en " + resultaat2.Waarde + " is het volgende resultaat: " + (resultaat1 + resultaat2));
 
         // Vraag de gebruiker om het getal
-        Console.Write("Voer het getal in: ");
-        int getal3;
-        while (!int.TryParse(Console.ReadLine(), out getal3))
+        Console.Write("Voer een getal in: ");
+        int getal;
+        while (!int.TryParse(Console.ReadLine(), out getal))
         {
-            Console.Write("Ongeldige invoer. Voer een geldig getal in: ");
+            Console.WriteLine("Ongeldige invoer. Voer een getal in: ");
         }
-
-        SomInt resultaat = new SomInt(getal3, getal3) + new SomInt(getal3, getal3);
-        Console.WriteLine($"Waarde van het getal 4 keer opgeteld {resultaat.Waarde}");
+        int resultaat = new SomInt(getal, getal) + new SomInt(getal, getal);
+        Console.WriteLine($"Waarde van het getal 4 keer opgeteld {resultaat}");
     }
     public static void Word()
     {
@@ -121,8 +119,8 @@ public class Program
     public static void Main(string[] args)
     {
         //Hexadecimal();
-        //Calc();
+        Calc();
         //Sorting();
-        Word();
+        //Word();
     }
 }

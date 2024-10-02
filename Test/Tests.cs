@@ -1,44 +1,83 @@
 using Calc;
+using Hex;
 using Sort;
-namespace Test;
-
-public class Tests
+namespace Test
 {
-    [Theory]
-    [InlineData(6)]
-    [InlineData(5)]
-    [InlineData(10)]
-    public void TestCalc()
+    public class Tests
     {
-        // Arrange
-        int getal1 = 5;
-        int getal2 = 6;
-        int expected = 11;
+        [Theory]
+        [InlineData(1324)]
+        public void TestHex(int value)
+        {
+            HexaDecimaal test = new HexaDecimaal();
+            test.SetHex(value);
+            var result = test.GetHex();
+            Assert.Equal(result, test.GetHex());
+        }
+        [Theory]
+        [InlineData(1324)]
+        public void TestBinary(int value)
+        {
+            HexaDecimaal test = new HexaDecimaal();
+            test.SetHex(value);
+            var result = test.GetByte();
+            Assert.Equal(result, test.GetByte());
+        }
+        [Theory]
+        [InlineData(1324)]
+        public void TestDec(int value)
+        {
+            HexaDecimaal test = new HexaDecimaal();
+            test.SetHex(value);
+            Assert.Equal(value, test.GetDec());
+        }
+        [Theory]
+        [InlineData(80000)]
+        public void TestLimit(int value)
+        {
+            HexaDecimaal test = new HexaDecimaal();
+            Assert.Throws<ArgumentOutOfRangeException>(() => test.SetHex(value));
+        }
+        [Theory]
+        [InlineData(13, 15)]
+        public void TestCalc(int value1, int value2)
+        {
+            SomInt test1 = new SomInt(value1);
+            SomInt test2 = new SomInt(value2);
+            SomInt som = new SomInt(value1, value2);
+            Assert.Equal(som.Waarde, test1 + test2);
+        }
+        [Fact]
+        public void TestBubbleSort()
+        {
+            // Create a Sorter object
+            Sorter sorter = new Sorter();
 
-        // Act
-        SomInt resultaat1 = new SomInt(getal1, getal2);
+            // Define an array of strings to be sorted
+            List<string> names = ["Banana", "Apple", "Orange", "Grape", "Pineapple", "Mango"];
+            names.Add("Strawberry");
 
-        // Assert
-        Assert.Equal(expected, resultaat1.Waarde);
-    }
-    public void TestOverflow()
-    {
-        SomInt resultaat1 = new SomInt(int.MaxValue, 1);
-    }
-    [Fact]
-    public void TestSorting()
-    {
-        // Create a Sorter object
-        Sorter sorter = new Sorter();
+            // Call the BubbleSort method to sort the array
+            sorter.BubbleSort(names);
 
-        // Define an array of strings to be sorted
-        List<string> names = ["Banana", "Apple", "Orange", "Grape", "Pineapple", "Mango"];
-        names.Add("Strawberry");
+            // Check if the array is sorted
+            Assert.Equal(new List<string> { "Apple", "Banana", "Grape", "Mango", "Orange", "Pineapple", "Strawberry" }, names);
+        }
+        [Fact]
+        public void TestInsertSort()
+        {
+            // Create a Sorter object
+            Sorter sorter = new Sorter();
 
-        // Call the BubbleSort method to sort the array
-        sorter.BubbleSort(names);
+            // Define an array of strings to be sorted
+            List<string> names = ["Banana", "Apple", "Orange", "Grape", "Pineapple", "Mango"];
+            names.Add("Strawberry");
 
-        // Check if the array is sorted
-        Assert.Equal(new List<string> { "Apple", "Banana", "Grape", "Mango", "Orange", "Pineapple", "Strawberry" }, names);
+            // Call the BubbleSort method to sort the array
+            sorter.InsertSort(names);
+
+            // Check if the array is sorted
+            Assert.Equal(new List<string> { "Apple", "Banana", "Grape", "Mango", "Orange", "Pineapple", "Strawberry" }, names);
+        }
     }
 }

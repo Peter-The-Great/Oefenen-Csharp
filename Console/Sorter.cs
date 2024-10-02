@@ -44,22 +44,25 @@ public class Sorter
     /// <returns>De gesorteerde lijst van Strings</returns>
     public void InsertSort(List<string> array)
     {
-        for (int step = 1; step < array.Count; step++)
+        for (int i = 1; i < array.Count; i++)
         {
-            var insertindex = step;
-            var currentvalue = array[step];
-            for (int j = step - 1; j >= 0; j--)
+            int insertIndex = i;
+            string currentValue = array[i];
+
+            for (int j = i - 1; j >= 0; j--)
             {
-                if(string.Compare(array[j], currentvalue) > 0)
+                // Use string.Compare to compare strings lexicographically
+                if (string.Compare(array[j], currentValue) > 0)
                 {
                     array[j + 1] = array[j];
-                    insertindex = j;
+                    insertIndex = j;
                 }
                 else
                 {
                     break;
                 }
             }
+            array[insertIndex] = currentValue;
         }
     }
 }

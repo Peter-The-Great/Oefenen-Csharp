@@ -22,8 +22,9 @@ public class SomInt
 
         Waarde = getal1 + getal2;
     }
-    public static SomInt operator+ (SomInt a, SomInt b)
+    public static int operator+ (SomInt a, SomInt b)
     {
-        return new SomInt(a.Waarde + b.Waarde);
+        SomInt resultaat = new SomInt(a.Waarde, b.Waarde);
+        return resultaat.Waarde;
     }
 }
