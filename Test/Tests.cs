@@ -14,6 +14,7 @@ namespace Test
             mockHexaDecimaal.Setup(x => x.GetHex()).Returns(value.ToString("X"));
             var result = mockHexaDecimaal.Object.GetHex();
             Assert.Equal(value.ToString("X"), result);
+            mockHexaDecimaal.Verify(x => x.GetHex(), Times.Once);
         }
         [Theory]
         [InlineData(1324)]
@@ -23,6 +24,7 @@ namespace Test
             mockHexaDecimaal.Setup(x => x.GetByte()).Returns(Convert.ToString(value, 2));
             var result = mockHexaDecimaal.Object.GetByte();
             Assert.Equal(Convert.ToString(value, 2), result);
+            mockHexaDecimaal.Verify(x => x.GetByte(), Times.Once);
         }
         [Theory]
         [InlineData(1324)]
@@ -32,6 +34,7 @@ namespace Test
             mockHexaDecimaal.Setup(x => x.GetDec()).Returns(value);
             var result = mockHexaDecimaal.Object.GetDec();
             Assert.Equal(value, result);
+            mockHexaDecimaal.Verify(x => x.GetDec(), Times.Once);
         }
         [Theory]
         [InlineData(80000)]
