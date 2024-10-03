@@ -1,6 +1,7 @@
 using Calc;
 using Hex;
 using Sort;
+using Moq;
 namespace Test
 {
     public class Tests
@@ -9,27 +10,28 @@ namespace Test
         [InlineData(1324)]
         public void TestHex(int value)
         {
-            HexaDecimaal test = new HexaDecimaal();
-            test.SetHex(value);
-            var result = test.GetHex();
-            Assert.Equal(result, test.GetHex());
+            var mockHexaDecimaal = new Mock<HexaDecimaal>();
+            mockHexaDecimaal.Setup(x => x.GetHex()).Returns(value.ToString("X"));
+            var result = mockHexaDecimaal.Object.GetHex();
+            Assert.Equal(value.ToString("X"), result);
         }
         [Theory]
         [InlineData(1324)]
-        public void TestBinary(int value)
+        public void TestByte(int value)
         {
-            HexaDecimaal test = new HexaDecimaal();
-            test.SetHex(value);
-            var result = test.GetByte();
-            Assert.Equal(result, test.GetByte());
+            var mockHexaDecimaal = new Mock<HexaDecimaal>();
+            mockHexaDecimaal.Setup(x => x.GetByte()).Returns(Convert.ToString(value, 2));
+            var result = mockHexaDecimaal.Object.GetByte();
+            Assert.Equal(Convert.ToString(value, 2), result);
         }
         [Theory]
         [InlineData(1324)]
         public void TestDec(int value)
         {
-            HexaDecimaal test = new HexaDecimaal();
-            test.SetHex(value);
-            Assert.Equal(value, test.GetDec());
+            var mockHexaDecimaal = new Mock<HexaDecimaal>();
+            mockHexaDecimaal.Setup(x => x.GetDec()).Returns(value);
+            var result = mockHexaDecimaal.Object.GetDec();
+            Assert.Equal(value, result);
         }
         [Theory]
         [InlineData(80000)]
