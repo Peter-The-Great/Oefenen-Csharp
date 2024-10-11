@@ -2,6 +2,7 @@
 using Hex;
 using Calc;
 using Word;
+using Variance;
 using System.Diagnostics;
 public class Program
 {
@@ -116,11 +117,32 @@ public class Program
             Console.WriteLine($"Er is een fout opgetreden bij het lezen van het bestand: {ex.Message}");
         }
     }
+    public static void Variance()
+    {
+        //Covariance Example [Array +  IEnumerable<T> +  IEnumerator<T>  +  IInterface<Out T>  +  Func<T>]
+        object obj = new string[] { "example" };
+        object[] array = (string[]) obj;
+        IEnumerable<object> enumerable = (IEnumerable<object>) obj;
+        IEnumerator<object> enumerator = ((IEnumerable<object>) obj).GetEnumerator();
+        IGoOut<object> goOut = new GoOutClass<string>();
+        Func<object> func = () => obj;
+
+        Console.WriteLine("Covariance Example");
+        Console.WriteLine("Array: " + array.GetType());
+        Console.WriteLine("IEnumerable: " + enumerable.GetType());
+        Console.WriteLine("IEnumerator: " + enumerator.GetType());
+        Console.WriteLine("IGoOut: " + goOut.GetType());
+        Console.WriteLine("Func: " + func.GetType());
+
+        //Contravariance Example[IInterface<in T>]
+        IComeIn<string> comeIn = new ComeInClass<object>();
+    }
     public static void Main(string[] args)
     {
         //Hexadecimal();
-        Calc();
+        //Calc();
         //Sorting();
         //Word();
+        Variance();
     }
 }
