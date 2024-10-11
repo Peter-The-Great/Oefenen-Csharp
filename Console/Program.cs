@@ -139,10 +139,10 @@ public class Program
     }
     public static void Main(string[] args)
     {
-        //Hexadecimal();
-        //Calc();
-        //Sorting();
-        //Word();
+        Hexadecimal();
+        Calc();
+        Sorting();
+        Word();
         Variance();
     }
 }
