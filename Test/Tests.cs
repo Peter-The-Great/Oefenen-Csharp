@@ -1,7 +1,7 @@
 using Calc;
 using Hex;
 using Sort;
-using Moq;
+using Variance;
 namespace Test
 {
     public class Tests
@@ -83,6 +83,18 @@ namespace Test
 
             // Check if the array is sorted
             Assert.Equal(new List<string> { "Apple", "Banana", "Grape", "Mango", "Orange", "Pineapple", "Strawberry" }, names);
+        }
+        [Fact]
+        public void TestVariance()
+        {
+            var mockGoOut = new Mock<IGoOut<object>>();
+            var mockComeIn = new Mock<IComeIn<string>>();
+            mockGoOut.Setup(x => x.Func()).Returns("Hello");
+            mockComeIn.Setup(x => x.Action(It.IsAny<string>()));
+            mockComeIn.Object.Action("Hello");
+            mockGoOut.Object.Func();
+            mockGoOut.Verify(x => x.Func(), Times.Once);
+            mockComeIn.Verify(x => x.Action(It.IsAny<string>()), Times.Once);
         }
     }
 }
