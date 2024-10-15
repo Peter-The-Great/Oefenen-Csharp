@@ -9,17 +9,18 @@ public class BloggingContext : DbContext
 
     public string DbPath { get; }
 
-    public BloggingContext()
-    {
-        var folder = Environment.SpecialFolder.LocalApplicationData;
-        var path = Environment.GetFolderPath(folder);
-        DbPath = System.IO.Path.Join(path, "blogging.db");
-    }
-
     // The following configures EF to create a Sqlite database file in the
     // special "local" folder for your platform.
     protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlite($"Data Source={DbPath}");
+        => options.UseSqlite($"Data Source=blogging.db");
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Blog>()
+        .HasMany(b => b.Posts)
+        .WithOne(p => p.Blog)
+        .OnDelete(DeleteBehavior.Cascade);
+    }
 }
 
 public class Blog
@@ -37,5 +38,5 @@ public class Post
     public string? Content { get; set; }
 
     public int? BlogId { get; set; }
-    public Blog Blog { get; set; }
+    public Blog? Blog { get; set; }
 }

@@ -37,7 +37,7 @@ public class HexaDecimaal  //hex1
     /// Get-methode die de hexadecimale waarde teruggeeft
     /// </summary>
     /// <returns>De waarde van dat je hebt ingevuld</returns>
-    public string GetHex()
+    public virtual string GetHex()
     {
         return hexWaarde;
     }
@@ -45,11 +45,11 @@ public class HexaDecimaal  //hex1
     /// Get-methode die de decimale waarde teruggeeft
     /// </summary>
     /// <returns>De decimale waarde van de hexadecimale waarde</returns>
-    public int GetDec()
+    public virtual int GetDec()
     {
         return int.Parse(hexWaarde, System.Globalization.NumberStyles.HexNumber);
     }
-    public string GetByte()
+    public virtual string GetByte()
     {
         return Convert.ToString(GetDec(), 2);
     }
