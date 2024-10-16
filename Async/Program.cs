@@ -1,118 +1,76 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-
-namespace AsyncBreakfast
+using System.Threading;
+using AsyncBreakfast.AsyncBreakfast;
+class Program
 {
-    // These classes are intentionally empty for the purpose of this example. They are simply marker classes for the purpose of demonstration, contain no properties, and serve no other purpose.
-    internal class Bacon { }
-    internal class Coffee { }
-    internal class Egg { }
-    internal class Juice { }
-    internal class Toast { }
-
-    class Program
+    static async Task Main(string[] args)
     {
-        static async Task Main(string[] args)
+        await AsyncBreakfast.Hoofd();
+        //await Method1();
+        //await Method2();
+        //await Method3();
+    }
+
+    public static async Task Method1()
+    {
+        await Task.Run(() =>
         {
-            Coffee cup = PourCoffee();
-            Console.WriteLine("coffee is ready");
-
-            var eggsTask = FryEggsAsync(2);
-            var baconTask = FryBaconAsync(3);
-            var toastTask = MakeToastWithButterAndJamAsync(2);
-
-            var breakfastTasks = new List<Task> { eggsTask, baconTask, toastTask };
-            while (breakfastTasks.Count > 0)
+            for (int i = 0; i < 100; i++)
             {
-                Task finishedTask = await Task.WhenAny(breakfastTasks);
-                if (finishedTask == eggsTask)
-                {
-                    Console.WriteLine("eggs are ready");
-                }
-                else if (finishedTask == baconTask)
-                {
-                    Console.WriteLine("bacon is ready");
-                }
-                else if (finishedTask == toastTask)
-                {
-                    Console.WriteLine("toast is ready");
-                }
-                await finishedTask;
-                breakfastTasks.Remove(finishedTask);
+                Console.WriteLine(" Method 1");
+                // Do something
+                Task.Delay(100).Wait();
             }
+        });
+    }
 
-            Juice oj = PourOJ();
-            Console.WriteLine("oj is ready");
-            Console.WriteLine("Breakfast is ready!");
-        }
 
-        static async Task<Toast> MakeToastWithButterAndJamAsync(int number)
+    public static async Task Method2()
+    {
+        await Task.Run(() =>
         {
-            var toast = await ToastBreadAsync(number);
-            ApplyButter(toast);
-            ApplyJam(toast);
-
-            return toast;
-        }
-
-        private static Juice PourOJ()
-        {
-            Console.WriteLine("Pouring orange juice");
-            return new Juice();
-        }
-
-        private static void ApplyJam(Toast toast) =>
-            Console.WriteLine("Putting jam on the toast");
-
-        private static void ApplyButter(Toast toast) =>
-            Console.WriteLine("Putting butter on the toast");
-
-        private static async Task<Toast> ToastBreadAsync(int slices)
-        {
-            for (int slice = 0; slice < slices; slice++)
+            for (int i = 0; i < 25; i++)
             {
-                Console.WriteLine("Putting a slice of bread in the toaster");
+                Console.WriteLine(" Method 1");
+                // Do something
+                Task.Delay(100).Wait();
             }
-            Console.WriteLine("Start toasting...");
-            await Task.Delay(3000);
-            Console.WriteLine("Remove toast from toaster");
-
-            return new Toast();
+        });
+    }
+    
+    public static async Task Method3()
+    {
+        ConsoleWriteLine($"Start Program");
+      
+        Task<int> taskA = MethodAAsync();
+    
+        for (int i = 0; i < 5; i++) {
+            ConsoleWriteLine($" B{i}");
+            Task.Delay(50).Wait();
         }
-
-        private static async Task<Bacon> FryBaconAsync(int slices)
-        {
-            Console.WriteLine($"putting {slices} slices of bacon in the pan");
-            Console.WriteLine("cooking first side of bacon...");
-            await Task.Delay(3000);
-            for (int slice = 0; slice < slices; slice++)
-            {
-                Console.WriteLine("flipping a slice of bacon");
-            }
-            Console.WriteLine("cooking the second side of bacon...");
-            await Task.Delay(3000);
-            Console.WriteLine("Put bacon on plate");
-
-            return new Bacon();
+    
+        ConsoleWriteLine("Wait for taskA termination");
+    
+        await taskA;
+    
+        ConsoleWriteLine($"The result of taskA is {taskA.Result}");
+    }
+    static async Task<int> MethodAAsync() {
+        for (int i = 0; i < 5; i++) {
+            ConsoleWriteLine($" A{i}");
+            await Task.Delay(100);
         }
-
-        private static async Task<Egg> FryEggsAsync(int howMany)
-        {
-            Console.WriteLine("Warming the egg pan...");
-            await Task.Delay(3000);
-            Console.WriteLine($"cracking {howMany} eggs");
-            Console.WriteLine("cooking the eggs ...");
-            await Task.Delay(3000);
-            Console.WriteLine("Put eggs on plate");
-
-            return new Egg();
-        }
-
-        private static Coffee PourCoffee()
-        {
-            Console.WriteLine("Pouring coffee");
-            return new Coffee();
-        }
+        int result = 123;
+        ConsoleWriteLine($" A returns result {result}");
+        return result;
+    }
+    
+    // Convenient helper to print colorful threadId on console
+    static void ConsoleWriteLine(string str) {
+        int threadId = Thread.CurrentThread.ManagedThreadId;
+        Console.ForegroundColor = threadId == 1 ? ConsoleColor.White : ConsoleColor.Cyan;
+        Console.WriteLine(
+            $"{str}{new string(' ', 26 - str.Length)}   Thread {threadId}");
     }
 }
