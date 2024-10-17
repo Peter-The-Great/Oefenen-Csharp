@@ -11,5 +11,5 @@ public class Director
     [MaxLength(50, ErrorMessage = "Name can be at most 50 characters long.")]
     public string Name { get; set; }
 
-    public ICollection<Movie> Movies { get; set;}
+    public ICollection<Movie> Movies { get; set;} = new List<Movie>();
 }

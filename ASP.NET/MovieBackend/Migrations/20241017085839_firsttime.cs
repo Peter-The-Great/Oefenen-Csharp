@@ -93,8 +93,8 @@ namespace MovieBackend.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "MovieId", "Rating", "UserName" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 10, 17, 10, 45, 30, 534, DateTimeKind.Local).AddTicks(774), "Amazing!", 1, 5, "JohnDoe" },
-                    { 2, new DateTime(2024, 10, 17, 10, 45, 30, 534, DateTimeKind.Local).AddTicks(863), "Great movie!", 2, 4, "JaneDoe" }
+                    { 1, new DateTime(2024, 10, 17, 10, 58, 36, 163, DateTimeKind.Local).AddTicks(1562), "Amazing!", 1, 5, "JohnDoe" },
+                    { 2, new DateTime(2024, 10, 17, 10, 58, 36, 163, DateTimeKind.Local).AddTicks(1661), "Great movie!", 2, 4, "JaneDoe" }
                 });
 
             migrationBuilder.CreateIndex(

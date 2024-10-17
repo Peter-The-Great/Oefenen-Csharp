@@ -11,7 +11,7 @@ using movies.Models;
 namespace MovieBackend.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20241017084533_firsttime")]
+    [Migration("20241017085839_firsttime")]
     partial class firsttime
     {
         /// <inheritdoc />
@@ -123,7 +123,7 @@ namespace MovieBackend.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 10, 17, 10, 45, 30, 534, DateTimeKind.Local).AddTicks(774),
+                            CreatedAt = new DateTime(2024, 10, 17, 10, 58, 36, 163, DateTimeKind.Local).AddTicks(1562),
                             Description = "Amazing!",
                             MovieId = 1,
                             Rating = 5,
@@ -132,7 +132,7 @@ namespace MovieBackend.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 10, 17, 10, 45, 30, 534, DateTimeKind.Local).AddTicks(863),
+                            CreatedAt = new DateTime(2024, 10, 17, 10, 58, 36, 163, DateTimeKind.Local).AddTicks(1661),
                             Description = "Great movie!",
                             MovieId = 2,
                             Rating = 4,
