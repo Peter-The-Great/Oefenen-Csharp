@@ -1,0 +1,6 @@
+@Hoorcollege4._2_HostAddress = http://localhost:5058
+
+GET {{Hoorcollege4._2_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
