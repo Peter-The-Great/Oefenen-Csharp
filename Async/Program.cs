@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Threading;
-using AsyncBreakfast.AsyncBreakfast;
+using AsyncBreakfast;
 class Program
 {
     static async Task Main(string[] args)
     {
-        await AsyncBreakfast.Hoofd();
+        await AsyncBreakfast.AsyncBreakfast.Hoofd();
         //await Method1();
         //await Method2();
         //await Method3();
@@ -32,7 +32,7 @@ class Program
         {
             for (int i = 0; i < 25; i++)
             {
-                Console.WriteLine(" Method 1");
+                Console.WriteLine(" Method 2");
                 // Do something
                 Task.Delay(100).Wait();
             }

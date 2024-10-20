@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 public class BloggingContext : DbContext
 {
@@ -25,15 +26,18 @@ public class BloggingContext : DbContext
 
 public class Blog
 {
+    [Key]
     public int BlogId { get; set; }
+    [MaxLength(500)]
     public string? Url { get; set; }
-
     public List<Post> Posts { get; } = new();
 }
 
 public class Post
 {
+    [Key]
     public int PostId { get; set; }
+    [MaxLength(500)]
     public string? Title { get; set; }
     public string? Content { get; set; }
 
