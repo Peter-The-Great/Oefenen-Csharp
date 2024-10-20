@@ -1,4 +1,5 @@
-﻿using System;
+﻿namespace Linken;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Numerics;
@@ -40,10 +41,11 @@ public class Program
         BigInteger number1 = 1;
         BigInteger number2 = 1;
         yield return number1;
+        yield return number2;
         while (true)
         {
-            yield return number2;
             BigInteger temp = number1 + number2;
+            yield return temp;
             number1 = number2;
             number2 = temp;
         }
