@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<!-- Classes in JS -->
+<head>
+</head>
+<body>
+   <H1> Demo map </H1>
+
+   <script>
+      const lijst = ["een", "twee", "drie"];
+
+      const x = document.createElement("p");
+      x.innerHTML = lijst.map(
+         (value) => { return " <em>"+ value + "</em>"}
+      );
+      document.body.appendChild(x);
+   </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<!-- let scope van let: foutmelding bij klik_it -->
+<head>
+   <script>   
+      function klik_it() {
+         x = 10;
+         x = x + " tien";
+         document.getElementById('test').innerHTML = x;
+      }
+
+      function clear_x() {
+         let x = "";
+         document.getElementById('test').innerHTML = x;
+      }
+
+   </script>
+</head>
+<body>
+   <script>
+      // x = 10    // x is nu een andere variabele dan in clear_x
+   </script>
+   <H1> Demo let</H1>
+
+   <p id='test'> Let </p>
+   
+   <button onclick="klik_it();"> klik! </button>
+   <button onclick="clear_x();"> reset </button>
+
+</body>
+</html>

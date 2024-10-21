@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<!-- scope - demo 2 init in ander script tag. -->
+<head>
+   <script>   
+      function klik_it() {
+         x = x + " tien";
+         document.getElementById('test').innerHTML = x;
+      }   
+   </script>
+</head>
+<body>
+   <H1> Demo scope</H1>
+
+   <p id='test'> Scope </p>
+   
+   <button onclick="klik_it();"> klik! </button>
+
+   <script>
+
+      x = 10;
+
+   </script>
+
+</body>
+</html>

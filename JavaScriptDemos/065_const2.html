@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<!-- const Array is const de inhoud niet! -->
+<head>
+   <script>   
+      function klik_it() {
+         x = "Hoi";
+         document.getElementById('test').innerHTML = x;
+      }
+
+      function clear_x() {
+         const x = [10, 20];
+         x[0] = 30;
+         document.getElementById('test').innerHTML = x;
+      }
+   </script>
+</head>
+<body>
+   <H1> Demo const</H1>
+
+   <p id='test'> const </p>
+   
+   <button onclick="klik_it();"> klik! </button>
+   <button onclick="clear_x();"> reset </button>
+
+</body>
+</html>

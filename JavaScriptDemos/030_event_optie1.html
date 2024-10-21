@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+      h1 {
+         font-family: 'Courier New', Courier, monospace;
+         color: navy;
+         margin-left: 20px;
+      }
+   </style>
+</head>
+
+<body onload="geladen();" >
+
+   <H1> Demo events</H1>
+   <p id='test'> Wie daar.. </p>
+ 
+   <button onclick="klik_it();"> klik! </button>
+
+   <script>
+      function klik_it() {
+         document.getElementById('test').innerHTML = "Tony hier..";
+      }
+    
+      function geladen() {
+         window.console.log("pagina is geladen.");
+      }
+
+   </script>
+
+</body>
+</html>

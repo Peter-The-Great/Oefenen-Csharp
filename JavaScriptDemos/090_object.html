@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<!-- Objecten in JS -->
+<head>
+   <script>   
+      const persoon = {
+         naam : "Tony",
+         beroep: "docent",
+         leeftijd: 57,
+         print: function() {
+            return this.naam + " " + this.beroep + " leeftijd: "+ this.leeftijd
+         }
+      }
+   </script>
+</head>
+<body>
+   <H1> Demo objecten </H1>
+
+   <script>
+      const x = document.createElement("p");
+      x.innerHTML = "De persoon is: " + persoon.print();
+      document.body.appendChild(x);
+   </script>
+</body>
+</html>

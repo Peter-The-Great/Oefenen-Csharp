@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<!-- scope - demo 3 init in andere functie. -->
+<head>
+   <script>   
+      function klik_it() {
+         // eerst clear_x aanroepen anders foutmelding.
+         x = x + " tien";
+         document.getElementById('test').innerHTML = x;
+      }
+
+      function clear_x() {
+         x = "";
+         document.getElementById('test').innerHTML = x;
+      }
+
+   </script>
+</head>
+<body>
+   <H1> Demo scope</H1>
+
+   <p id='test'> Scope </p>
+   
+   <button onclick="klik_it();"> klik! </button>
+   <button onclick="clear_x();"> reset </button>
+
+</body>
+</html>

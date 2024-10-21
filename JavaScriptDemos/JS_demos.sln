@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F80F8A99-754B-4473-B2D0-3633A33689AB}"
+	ProjectSection(SolutionItems) = preProject
+		010_startdemo.html = 010_startdemo.html
+		020_dom_toevoegen.html = 020_dom_toevoegen.html
+		030_event_optie1.html = 030_event_optie1.html
+		031_event_optie2.html = 031_event_optie2.html
+		032_event_optie3.html = 032_event_optie3.html
+		033_event_optie4.html = 033_event_optie4.html
+		040_script_in_head.html = 040_script_in_head.html
+		050_weakly_typed.html = 050_weakly_typed.html
+		060_scope1.html = 060_scope1.html
+		061_scope2.html = 061_scope2.html
+		062_scope3.html = 062_scope3.html
+		063_let.html = 063_let.html
+		064_const.html = 064_const.html
+		065_const2.html = 065_const2.html
+		070_function_variabele.html = 070_function_variabele.html
+		071_function_variabele2.html = 071_function_variabele2.html
+		072_function_variabele3.html = 072_function_variabele3.html
+		080_hoisting.html = 080_hoisting.html
+		090_object.html = 090_object.html
+		091_class.html = 091_class.html
+		100_map.html = 100_map.html
+		101_uitpakken.html = 101_uitpakken.html
+		110_import.html = 110_import.html
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25A05880-4E95-4341-BC36-14BA10490189}
+	EndGlobalSection
+EndGlobal

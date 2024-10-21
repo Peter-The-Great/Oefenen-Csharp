@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<!-- script in header -->
+<head>
+   <style>
+      h1 {
+         font-family: 'Courier New', Courier, monospace;
+         color: navy;
+         margin-left: 20px;
+      }
+   </style>
+   <script>
+      function klik_it() {
+         const x = document.getElementById('test');
+         x.innerHTML = "Tony hier..";
+         window.console.log(x);
+      }
+
+      function geladen() {
+         window.console.log("pagina is geladen.");
+         const x = document.createElement("p");
+         x.innerHTML = window.innerWidth + " x " + window.innerHeight;
+         document.body.appendChild(x);
+      }
+   </script>
+</head>
+<body>
+   <H1> Demo scripts</H1>
+   <p id='test'> Wie daar.. </p>
+
+   <button onclick="klik_it();"> klik! </button>
+
+   <script>
+      window.onload = geladen();
+   </script>
+</body>
+</html>

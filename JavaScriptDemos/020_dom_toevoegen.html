@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+      h1 {
+         font-family: 'Courier New', Courier, monospace;
+         color: navy;
+         margin-left: 20px;
+      }
+   </style>
+</head>
+<body>
+  
+   <H1> Demo DOM</H1>
+   <p id='test'> Wie daar.. </p>
+  
+   <button onclick="klik_it();"> klik! </button>
+  
+   <script>
+      function klik_it() {
+         const x = document.getElementById('test')
+         x.innerHTML = "Tony hier..";
+         window.console.log(x)
+      }
+    
+      const x = document.createElement("p");
+      x.innerHTML = window.innerWidth + " x " + window.innerHeight;
+      document.body.appendChild(x);
+    
+   </script>
+  
+</body>
+</html>
