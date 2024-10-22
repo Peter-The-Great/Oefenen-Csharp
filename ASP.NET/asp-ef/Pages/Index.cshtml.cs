@@ -1,7 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace asp_ef.Pages;
+namespace ContosoUniversity.Pages;
 
 public class IndexModel : PageModel
 {

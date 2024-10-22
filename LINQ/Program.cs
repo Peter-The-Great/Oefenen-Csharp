@@ -53,7 +53,7 @@ public class Program
 
     static void Main(string[] args)
     {
-        Opdracht1();
+        //Opdracht1();
         Opdracht2();
         Opdracht3();
         Opdracht4();
@@ -75,7 +75,7 @@ public class Program
     }
     static void Opdracht3() // Hoeveel films zijn er van 'Peter Weir' van het genre 'Sci-Fi'?.
     {
-        Console.WriteLine(Movies.Count(m=> m.Director == "Peter Weir" && m.Genre == "Sci-Fi"));
+        Console.WriteLine(Movies.Where(m => m.Director == "Peter Weir" && m.Genre == "Sci-Fi").Count());
     }
     static void Opdracht4() // Toon de 6e t/m 10e film uit de lijst.
     {
@@ -90,7 +90,7 @@ public class Program
     }
     static void Opdracht6() // Van welke regisseur is de film 'One Flew over the Cuckoo's Nest'?
     {
-        Console.WriteLine(Movies.Where(m => m.Title.Equals("One Flew Over the Cuckoo's Nest")).Select(m=> m.Director).FirstOrDefault());
+        Console.WriteLine(Movies.Where(m => m.Title == "One Flew Over the Cuckoo's Nest").Select(m=> m.Director).FirstOrDefault());
     }
     static void Opdracht7() // Wat is het 1000e Fibonacci getal?
     {

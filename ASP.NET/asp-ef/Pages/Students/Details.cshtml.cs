@@ -1,43 +1,38 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ContosoUniversity.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using ContosoUniversity.Data;
-using ContosoUniversity.Models;
 
-namespace asp_ef.Pages.Students
+namespace ContosoUniversity.Pages.Students;
+
+public class DetailsModel : PageModel
 {
-    public class DetailsModel : PageModel
+    private readonly ContosoUniversity.Data.SchoolContext _context;
+
+    public DetailsModel(ContosoUniversity.Data.SchoolContext context)
     {
-        private readonly ContosoUniversity.Data.SchoolContext _context;
+        _context = context;
+    }
 
-        public DetailsModel(ContosoUniversity.Data.SchoolContext context)
+    public Student Student { get; set; }
+
+    public async Task<IActionResult> OnGetAsync(int? id)
+    {
+        if (id == null)
         {
-            _context = context;
+            return NotFound();
         }
 
-        public Student Student { get; set; } = default!;
+        Student = await _context.Students
+            .Include(s => s.Enrollments)
+            .ThenInclude(e => e.Course)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(m => m.ID == id);
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        if (Student == null)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var student = await _context.Student.FirstOrDefaultAsync(m => m.ID == id);
-            if (student == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                Student = student;
-            }
-            return Page();
+            return NotFound();
         }
+        return Page();
     }
 }
