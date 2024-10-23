@@ -122,5 +122,6 @@ class Program
         HttpServer.listener.Close();
 
         // Start the WebSocket
+        WebSocket.WebSocketOn().GetAwaiter().GetResult();
     }
 }
